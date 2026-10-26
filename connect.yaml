@@ -1,0 +1,131 @@
+# The EcoLiving customer connector — the two mechanisms of Session 7, side by side, on the one resource
+# every shopper creates: the Customer.
+#
+# This file is the connector's ENTIRE deployment contract: Connect reads it to know what to build, what
+# to run, and what to ask a human for at install time.
+#
+# Three rules that catch everyone once:
+#   1. `name` MUST match the application's folder in this repository.
+#   2. `endpoint` is required for service / event / job, and the app must mount its router at the same
+#      path — otherwise the platform's traffic 404s.
+#   3. `securedConfiguration` is write-only: entered once at install, never displayed again.
+#
+# What the three applications teach, in one line each:
+#   customer-number-generator  — an API EXTENSION: the number must exist WHEN the customer is saved.
+#   email-verification-sender  — a SUBSCRIPTION: a side effect AFTER the save, with the id only the save produced.
+#   email-verification-receiver — a plain SERVICE: a public link target, for a storefront without a BFF.
+deployAs:
+  # ---------------------------------------------------------------------------------------------
+  # Before the save: assign EL-000042 to a customer that arrives without a number.
+  # postDeploy registers the API Extension (customer · Create) at CONNECT_SERVICE_URL, WITH authentication.
+  # Needs: manage_extensions (to register itself), manage_key_value_documents (the counter).
+  # ---------------------------------------------------------------------------------------------
+  - name: customer-number-generator
+    applicationType: service
+    endpoint: /customer-number
+    scripts:
+      postDeploy: npm install && npm run build && npm run connector:post-deploy
+      preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
+    configuration:
+      standardConfiguration:
+        - key: CUSTOMER_NUMBER_PREFIX
+          description: What a customer number looks like — the prefix before six zero-padded digits.
+          required: false
+          default: 'EL-'
+        - key: LOG_LEVEL
+          description: debug | info | warn | error
+          required: false
+          default: 'info'
+      securedConfiguration:
+        - key: EXTENSION_SECRET
+          description: >-
+            Shared secret presented by the platform on every Extension call. postDeploy registers the
+            Extension with it; the app rejects any call without it. Invent a strong random value per
+            installation — the endpoint is on the public internet.
+          required: true
+
+  # ---------------------------------------------------------------------------------------------
+  # After the save: CustomerCreated / CustomerEmailChanged → a verification token → a link, "mailed" to
+  # the ecoliving-mail-outbox Custom Object (the course has no mail provider; see outbox.service.ts).
+  # Connect provisions the topic; postDeploy creates the Subscription pointing at it.
+  # Needs: manage_subscriptions (to register itself), manage_customers (read + email token),
+  #        manage_key_value_documents (the outbox).
+  # ---------------------------------------------------------------------------------------------
+  - name: email-verification-sender
+    applicationType: event
+    endpoint: /email-verification
+    scripts:
+      postDeploy: npm install && npm run build && npm run connector:post-deploy
+      preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
+    configuration:
+      standardConfiguration:
+        - key: STOREFRONT_URL
+          description: >-
+            Where the verification link lands in `storefront` mode: the page hands the token to its
+            BFF, which confirms it (course task 5.8).
+          required: false
+          default: 'http://localhost:3000'
+        - key: VERIFY_LINK_MODE
+          description: >-
+            `storefront` (the BFF track): the link points at STOREFRONT_URL/verify-email?token=…
+            `connector` (the CIL track, which has no BFF): the link points at the receiver app below,
+            RECEIVER_URL/email-verification-confirm?token=…, which confirms and redirects.
+          required: false
+          default: 'storefront'
+        - key: RECEIVER_URL
+          description: >-
+            Public base URL of the email-verification-receiver app, required in `connector` mode. One
+            application cannot read another's CONNECT_SERVICE_URL, so after the first deploy copy the
+            receiver's URL from the deployment page into this value and redeploy.
+          required: false
+        - key: TOKEN_TTL_MINUTES
+          description: How long a verification link stays valid. 4320 = 3 days; the platform caps it at 43200.
+          required: false
+          default: '4320'
+        - key: MAX_MESSAGE_AGE_HOURS
+          description: >-
+            Backlog guard. Unacknowledged messages are retained 7 days, so a handler broken over a
+            weekend returns to a stampede of stale work; refuse anything older than this.
+          required: false
+          default: '72'
+        - key: LOG_LEVEL
+          description: debug | info | warn | error
+          required: false
+          default: 'info'
+
+  # ---------------------------------------------------------------------------------------------
+  # The link target, for a storefront that has no BFF: GET …/email-verification-confirm?token=… confirms
+  # the token and redirects to STOREFRONT_URL/verify-email?status=ok|invalid|retry.
+  # No secret: it is a link in an email, and the token is the proof. Needs: manage_customers.
+  # ---------------------------------------------------------------------------------------------
+  - name: email-verification-receiver
+    applicationType: service
+    endpoint: /email-verification-confirm
+    configuration:
+      standardConfiguration:
+        - key: STOREFRONT_URL
+          description: Where the shopper is sent after the click, with `?status=ok|invalid|retry`.
+          required: false
+          default: 'http://localhost:3000'
+        - key: LOG_LEVEL
+          description: debug | info | warn | error
+          required: false
+          default: 'info'
+
+# ---------------------------------------------------------------------------------------------
+# Credentials are NOT asked for at install time.
+#
+# Declaring apiClient.scopes makes Connect GENERATE an API Client holding exactly these scopes and
+# inject CTP_CLIENT_ID / CTP_CLIENT_SECRET / CTP_SCOPE / CTP_PROJECT_KEY / CTP_API_URL / CTP_AUTH_URL at
+# runtime. Do NOT also declare those CTP_* keys under `configuration` — they are provided at runtime.
+#
+# This client is shared by the three applications, so the list is their union; the per-application
+# comments above record what each one actually needs.
+# ---------------------------------------------------------------------------------------------
+inheritAs:
+  apiClient:
+    scopes:
+      - manage_extensions          # customer-number-generator: self-registration
+      - manage_subscriptions       # email-verification-sender: self-registration
+      - manage_customers           # sender: read the customer + email token · receiver: email confirm
+      - manage_key_value_documents # generator: the counter · sender: the mail outbox

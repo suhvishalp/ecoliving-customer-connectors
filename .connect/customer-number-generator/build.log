@@ -1,0 +1,142 @@
+Warning: Exporting to docker daemon (building without --publish) and daemon uses containerd storage; performance may be significantly degraded.
+For more information, see https://github.com/buildpacks/pack/issues/2272.
+gcr.io/buildpacks/builder@sha256:5977b4bd47d3e9ff729eefe9eb99d321d4bba7aa3b14986323133f40b622aef1: Pulling from buildpacks/builder
+Digest: sha256:5977b4bd47d3e9ff729eefe9eb99d321d4bba7aa3b14986323133f40b622aef1
+Status: Image is up to date for gcr.io/buildpacks/builder@sha256:5977b4bd47d3e9ff729eefe9eb99d321d4bba7aa3b14986323133f40b622aef1
+latest: Pulling from buildpacks/google-22/run
+c3e8d1ecfe5b: Pulling fs layer
+18980af62963: Pulling fs layer
+dc541b8d0272: Pulling fs layer
+cbe4e8f647f6: Pulling fs layer
+cbe4e8f647f6: Download complete
+dc541b8d0272: Download complete
+cbe4e8f647f6: Pull complete
+dc541b8d0272: Pull complete
+c3e8d1ecfe5b: Download complete
+18980af62963: Download complete
+18980af62963: Pull complete
+c3e8d1ecfe5b: Pull complete
+Digest: sha256:125aea105aef95a8ec1953af31d61de83f3a18a25ec00c3002dd8f2b5a994a6e
+Status: Downloaded newer image for gcr.io/buildpacks/google-22/run:latest
+0.0.1: Pulling from ct-connect-dev/buildpacks/connect-common-module
+a697d0ef67dd: Pulling fs layer
+fee6765633a6: Pulling fs layer
+f6a0ad7ef200: Pulling fs layer
+fee6765633a6: Already exists
+fee6765633a6: Pull complete
+f6a0ad7ef200: Download complete
+a697d0ef67dd: Download complete
+f6a0ad7ef200: Pull complete
+a697d0ef67dd: Pull complete
+Digest: sha256:33b7ff07d6fc9b34d6d62645422b557990ae593c3e563d653a924d43ee12a3ff
+Status: Downloaded newer image for europe-west1-docker.pkg.dev/ct-connect-dev/buildpacks/connect-common-module:0.0.1
+0.0.1: Pulling from ct-connect-dev/buildpacks/serve-application
+601df30403de: Pulling fs layer
+e7ed99e39a5f: Pulling fs layer
+5cf4c5e2327d: Pulling fs layer
+2f3d821da1ca: Pulling fs layer
+2f3d821da1ca: Already exists
+e7ed99e39a5f: Download complete
+601df30403de: Download complete
+5cf4c5e2327d: Download complete
+5cf4c5e2327d: Pull complete
+2f3d821da1ca: Pull complete
+e7ed99e39a5f: Pull complete
+601df30403de: Pull complete
+Digest: sha256:b705f2542a1ae53dfd2d687beefd5e2a8007066ecb666ddadf47c1f6935ac46a
+Status: Downloaded newer image for europe-west1-docker.pkg.dev/ct-connect-dev/buildpacks/serve-application:0.0.1
+0.0.1: Pulling from ct-connect-dev/buildpacks/connect-tester
+0ce94658e441: Pulling fs layer
+ffb269b0b7f1: Pulling fs layer
+58cad7496a76: Pulling fs layer
+38c19ebc7f8e: Pulling fs layer
+0ce94658e441: Already exists
+0ce94658e441: Pull complete
+38c19ebc7f8e: Download complete
+38c19ebc7f8e: Pull complete
+58cad7496a76: Download complete
+ffb269b0b7f1: Download complete
+58cad7496a76: Pull complete
+ffb269b0b7f1: Pull complete
+Digest: sha256:15cc4135a72deb78f8e4182d39aa89a65bb2072be230c457396238bb5dc5cad3
+Status: Downloaded newer image for europe-west1-docker.pkg.dev/ct-connect-dev/buildpacks/connect-tester:0.0.1
+Warning: Builder is trusted but additional modules were added; using the untrusted (5 phases) build flow
+docker.io/buildpacksio/lifecycle@sha256:11d05141f3449d434f20327261468c797c1642f029ff36ac68002bdaef115f69: Pulling from buildpacksio/lifecycle
+Digest: sha256:11d05141f3449d434f20327261468c797c1642f029ff36ac68002bdaef115f69
+Status: Image is up to date for buildpacksio/lifecycle@sha256:11d05141f3449d434f20327261468c797c1642f029ff36ac68002bdaef115f69
+Warning: PACK_VOLUME_KEY is unset; set this environment variable to a secret value to avoid creating a new volume cache on every build
+===> ANALYZING
+[analyzer] Image with name "ecoliving-customer-connectors_customer-number-generator" not found
+===> DETECTING
+[detector] target distro name/version labels not found, reading /etc/os-release file
+[detector] 4 of 13 buildpacks participating
+[detector] google.nodejs.runtime    1.0.0
+[detector] google.nodejs.npm        1.1.0
+[detector] google.utils.label-image 0.0.2
+[detector] npm-tester               0.0.1
+===> RESTORING
+===> BUILDING
+[builder] target distro name/version labels not found, reading /etc/os-release file
+[builder] === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
+[builder] 2026/10/26 12:03:03 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+[builder] ***** CACHE MISS: "nodejs"
+[builder] Installing Node.js v24.22.1.
+[builder] 2026/10/26 12:03:03 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-24.22.1.tar.gz
+[builder] === Node.js - Npm (google.nodejs.npm@1.1.0) ===
+[builder] ***** CACHE MISS: "npm_modules"
+[builder] Installing application dependencies.
+[builder] --------------------------------------------------------------------------------
+[builder] Running "npm ci --quiet --no-fund --no-audit (NODE_ENV=development)"
+[builder] 
+[builder] added 158 packages in 11s
+[builder] npm notice
+[builder] npm notice New major version of npm available! 11.19.1 -> 12.2.1
+[builder] npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+[builder] npm notice To update run: npm install -g npm@12.2.1
+[builder] npm notice
+[builder] Done "npm ci --quiet --no-fund --no-audit (NODE_ENV=development)" (12.365462591s)
+[builder] --------------------------------------------------------------------------------
+[builder] Running "npm run build"
+[builder] 
+[builder] > customer-number-generator@1.0.0 build
+[builder] > tsc
+[builder] 
+[builder] Done "npm run build" (9.763521443s)
+[builder] Retaining devDependencies because $NODE_ENV="development".
+[builder] ***** CACHE MISS: "watchexec"
+[builder] Installing watchexec v1.12.0
+[builder] --------------------------------------------------------------------------------
+[builder] Running "bash -c curl --fail --show-error --silent --location --retry 3 https://github.com/watchexec/watchexec/releases/download/1.12.0/watchexec-1.12.0-x86_64-unknown-linux-gnu.tar.xz | tar xJ --directory /layers/google.nodejs.npm/watchexec/bin --strip-components=1 --wildcards \"*watchexec\""
+[builder] curl: (35) error:0A000126:SSL routines::unexpected eof while reading
+[builder] xz: 
+[builder] (stdin): File format not recognized
+[builder] 
+[builder] tar: 
+[builder] Child returned status 1
+[builder] 
+[builder] tar: Error is not recoverable: exiting now
+[builder] Done "bash -c curl --fail --show-error --silent --location --retry..." (44.988608626s)
+[builder] === Utils - Label Image (google.utils.label-image@0.0.2) ===
+[builder] time=2026-10-26T12:04:29.510Z level=ERROR msg="Failed to write report" reportDetails="{BuildID:f02daa77-d2e9-4e22-bb3b-7706d5d7bd40 Lifecycle:Build ApplicationName:customer-number-generator BuildPackName:The npm tester to run npm tests BuildPackID:npm-tester Status:Success Messages:[{Message:{\"applicationName\":\"customer-number-generator\",\"testOutput\":\"\\n\\u003e customer-number-generator@1.0.0 test\\n\\u003e node scripts/test.mjs --coverage --collectCoverageFrom='src/**/*.{ts,jsx,tsx,js}' --coverageReporters='text'\\n\\n\\n\\u001b[1m\\u001b[30m\\u001b[46m RUN \\u001b[49m\\u001b[39m\\u001b[22m \\u001b[36mv4.1.12 \\u001b[39m\\u001b[90m/workspace/customer-number-generator\\u001b[39m\\n\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"postDeploy: Extension created\\\",\\\"at\\\":\\\"2026-10-26T12:04:27.452Z\\\",\\\"key\\\":\\\"ecoliving-customer-number\\\",\\\"url\\\":\\\"https://svc.commercetools.app/customer-number\\\"}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"postDeploy: Extension updated in place — no gap window\\\",\\\"at\\\":\\\"2026-10-26T12:04:27.483Z\\\",\\\"key\\\":\\\"ecoliving-customer-number\\\",\\\"url\\\":\\\"https://x/customer-number\\\"}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"preUndeploy: Extension removed\\\",\\\"at\\\":\\\"2026-10-26T12:04:27.499Z\\\",\\\"key\\\":\\\"ecoliving-customer-number\\\"}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"preUndeploy: Extension already absent\\\",\\\"at\\\":\\\"2026-10-26T12:04:27.544Z\\\",\\\"key\\\":\\\"ecoliving-customer-number\\\"}\\n \\u001b[32m✓\\u001b[39m tests/post-deploy.spec.ts \\u001b[2m(\\u001b[22m\\u001b[2m4 tests\\u001b[22m\\u001b[2m)\\u001b[22m\\u001b[32m 135\\u001b[2mms\\u001b[22m\\u001b[39m\\n \\u001b[32m✓\\u001b[39m tests/counter.service.spec.ts \\u001b[2m(\\u001b[22m\\u001b[2m5 tests\\u001b[22m\\u001b[2m)\\u001b[22m\\u001b[32m 257\\u001b[2mms\\u001b[22m\\u001b[39m\\n{\\\"level\\\":\\\"warn\\\",\\\"message\\\":\\\"Request rejected\\\",\\\"at\\\":\\\"2026-10-26T12:04:28.959Z\\\",\\\"correlationId\\\":\\\"local-2ac9fbc8-5f63-42e9-8d90-02923ce42300\\\",\\\"status\\\":401,\\\"code\\\":\\\"Unauthorized\\\"}\\n{\\\"level\\\":\\\"warn\\\",\\\"message\\\":\\\"Request rejected\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.046Z\\\",\\\"correlationId\\\":\\\"local-caf110c9-cd4a-428c-a87f-48cfba7f93a9\\\",\\\"status\\\":401,\\\"code\\\":\\\"Unauthorized\\\"}\\n{\\\"level\\\":\\\"warn\\\",\\\"message\\\":\\\"Request rejected\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.076Z\\\",\\\"correlationId\\\":\\\"local-3e19153a-e784-43d7-add3-48c92d3b50ad\\\",\\\"status\\\":401,\\\"code\\\":\\\"Unauthorized\\\"}\\n \\u001b[32m✓\\u001b[39m tests/customer-number.service.spec.ts \\u001b[2m(\\u001b[22m\\u001b[2m4 tests\\u001b[22m\\u001b[2m)\\u001b[22m\\u001b[32m 30\\u001b[2mms\\u001b[22m\\u001b[39m\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"Customer evaluated\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.132Z\\\",\\\"correlationId\\\":\\\"local-73b99ddf-3aa3-4b40-ad14-f1f5248ff29f\\\",\\\"action\\\":\\\"Create\\\",\\\"customerId\\\":\\\"c-1\\\",\\\"summary\\\":\\\"assigned EL-000042\\\",\\\"durationMs\\\":1}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"Customer evaluated\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.151Z\\\",\\\"correlationId\\\":\\\"local-6e952592-1391-431b-9f3f-57c8021f8418\\\",\\\"action\\\":\\\"Create\\\",\\\"customerId\\\":\\\"c-1\\\",\\\"summary\\\":\\\"keeps LEGACY-7\\\",\\\"durationMs\\\":0}\\n{\\\"level\\\":\\\"error\\\",\\\"message\\\":\\\"Counter unavailable — approving the sign-up without a number (fail open)\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.166Z\\\",\\\"correlationId\\\":\\\"local-36c857b3-474b-44c3-926c-2e14d7ba31f6\\\",\\\"reason\\\":\\\"503\\\"}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"Customer evaluated\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.167Z\\\",\\\"correlationId\\\":\\\"local-36c857b3-474b-44c3-926c-2e14d7ba31f6\\\",\\\"action\\\":\\\"Create\\\",\\\"customerId\\\":\\\"c-1\\\",\\\"summary\\\":\\\"no number allocated — approved without one\\\",\\\"durationMs\\\":2}\\n{\\\"level\\\":\\\"warn\\\",\\\"message\\\":\\\"Request rejected\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.193Z\\\",\\\"correlationId\\\":\\\"local-a35d1f1d-c3ff-44fe-8591-4066745aaf52\\\",\\\"status\\\":400,\\\"code\\\":\\\"InvalidInput\\\"}\\n{\\\"level\\\":\\\"warn\\\",\\\"message\\\":\\\"Request rejected\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.220Z\\\",\\\"correlationId\\\":\\\"local-caa992ed-71ad-4240-8ce0-1f3d87bfec57\\\",\\\"status\\\":400,\\\"code\\\":\\\"InvalidInput\\\"}\\n{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"Customer evaluated\\\",\\\"at\\\":\\\"2026-10-26T12:04:29.238Z\\\",\\\"correlationId\\\":\\\"abc-123\\\",\\\"action\\\":\\\"Create\\\",\\\"customerId\\\":\\\"c-1\\\",\\\"summary\\\":\\\"assigned EL-000042\\\",\\\"durationMs\\\":0}\\n \\u001b[32m✓\\u001b[39m tests/http.spec.ts \\u001b[2m(\\u001b[22m\\u001b[2m11 tests\\u001b[22m\\u001b[2m)\\u001b[22m\\u001b[33m 432\\u001b[2mms\\u001b[22m\\u001b[39m\\n\\n\\u001b[2m Test Files \\u001b[22m \\u001b[1m\\u001b[32m4 passed\\u001b[39m\\u001b[22m\\u001b[90m (4)\\u001b[39m\\n\\u001b[2m      Tests \\u001b[22m \\u001b[1m\\u001b[32m24 passed\\u001b[39m\\u001b[22m\\u001b[90m (24)\\u001b[39m\\n\\u001b[2m   Start at \\u001b[22m 12:04:24\\n\\u001b[2m   Duration \\u001b[22m 4.56s\\u001b[2m (transform 2.12s, setup 0ms, import 3.84s, tests 854ms, environment 9ms)\\u001b[22m\\n\\n\"} Time:2026-10-26 12:04:29.50884855 +0000 UTC m=+10.750618416}] Time:2026-10-26 12:04:18.779265753 +0000 UTC m=+0.021035578}" stack="open report/report.jsonl: no such file or directory"
+===> EXPORTING
+[exporter] Adding layer 'google.nodejs.runtime:node'
+[exporter] Adding layer 'google.nodejs.npm:devmode_scripts'
+[exporter] Adding layer 'google.nodejs.npm:env'
+[exporter] Adding layer 'google.nodejs.npm:watchexec'
+[exporter] Adding layer 'buildpacksio/lifecycle:launch.sbom'
+[exporter] Added 1/1 app layer(s)
+[exporter] Adding layer 'buildpacksio/lifecycle:launcher'
+[exporter] Adding layer 'buildpacksio/lifecycle:config'
+[exporter] Adding layer 'buildpacksio/lifecycle:process-types'
+[exporter] Adding label 'io.buildpacks.lifecycle.metadata'
+[exporter] Adding label 'io.buildpacks.build.metadata'
+[exporter] Adding label 'io.buildpacks.project.metadata'
+[exporter] Setting default process type 'web'
+[exporter] Saving ecoliving-customer-connectors_customer-number-generator...
+[exporter] *** Images (33fbc47f3f4e):
+[exporter]       ecoliving-customer-connectors_customer-number-generator
+[exporter]       ecoliving-customer-connectors_customer-number-generator:La04MXDMsrI46eg1KwGR
+[exporter] Adding cache layer 'google.nodejs.runtime:node'
+[exporter] Adding cache layer 'google.nodejs.npm:npm_modules'
+[exporter] Adding cache layer 'google.nodejs.npm:watchexec'
+Successfully built image 'ecoliving-customer-connectors_customer-number-generator'

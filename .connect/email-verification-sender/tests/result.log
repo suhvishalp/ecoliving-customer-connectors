@@ -1,0 +1,25 @@
+
+> email-verification-sender@1.0.0 test
+> node scripts/test.mjs --coverage --collectCoverageFrom='src/**/*.{ts,jsx,tsx,js}' --coverageReporters='text'
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/workspace/email-verification-sender[39m
+
+ [32m✓[39m tests/verification.service.spec.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 290[2mms[22m[39m
+{"level":"info","message":"postDeploy: Subscription created","at":"2026-10-26T12:04:22.094Z","key":"ecoliving-email-verification","destination":"GoogleCloudPubSub"}
+{"level":"info","message":"postDeploy: Subscription updated in place — no gap window","at":"2026-10-26T12:04:22.119Z","key":"ecoliving-email-verification","destination":"GoogleCloudPubSub"}
+{"level":"info","message":"preUndeploy: Subscription removed","at":"2026-10-26T12:04:22.127Z","key":"ecoliving-email-verification"}
+{"level":"info","message":"preUndeploy: Subscription already absent","at":"2026-10-26T12:04:22.144Z","key":"ecoliving-email-verification"}
+ [32m✓[39m tests/post-deploy.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 188[2mms[22m[39m
+{"level":"info","message":"Message handled","at":"2026-10-26T12:04:23.174Z","messageId":"m1","type":"CustomerCreated","resourceId":"c1","ack":true,"detail":"verification link sent to ada@lhc.test (CustomerCreated)","durationMs":28}
+{"level":"info","message":"Message handled","at":"2026-10-26T12:04:23.238Z","messageId":"m2","type":"CustomerDeleted","ack":true,"detail":"type CustomerDeleted is not handled","durationMs":1}
+{"level":"error","message":"Malformed message acknowledged and dropped — it can never succeed","at":"2026-10-26T12:04:23.263Z","reason":"Malformed envelope: message.data is missing."}
+ [32m✓[39m tests/http.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 302[2mms[22m[39m
+ [32m✓[39m tests/envelope.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m33 passed[39m[22m[90m (33)[39m
+[2m   Start at [22m 12:04:19
+[2m   Duration [22m 4.33s[2m (transform 1.35s, setup 0ms, import 3.49s, tests 811ms, environment 2ms)[22m
+
+

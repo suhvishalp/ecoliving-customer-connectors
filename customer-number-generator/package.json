@@ -1,0 +1,38 @@
+{
+  "name": "customer-number-generator",
+  "version": "1.0.0",
+  "description": "EcoLiving customer numbers, assigned by commercetools before every new customer is saved (course Sessions 7.6 / 8)",
+  "main": "dist/index.js",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node scripts/test.mjs",
+    "typecheck": "tsc --noEmit",
+    "connector:post-deploy": "node dist/connector/post-deploy.js",
+    "connector:pre-undeploy": "node dist/connector/pre-undeploy.js",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@commercetools/platform-sdk": "^8.3.0",
+    "@commercetools/ts-client": "^4.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.0",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.12"
+  },
+  "overrides": {
+    "source-map-js": "^1.2.2",
+    "body-parser": "^1.20.9"
+  }
+}

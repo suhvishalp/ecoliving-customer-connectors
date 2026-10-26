@@ -1,0 +1,32 @@
+
+> customer-number-generator@1.0.0 test
+> node scripts/test.mjs --coverage --collectCoverageFrom='src/**/*.{ts,jsx,tsx,js}' --coverageReporters='text'
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/workspace/customer-number-generator[39m
+
+{"level":"info","message":"postDeploy: Extension created","at":"2026-10-26T12:04:27.452Z","key":"ecoliving-customer-number","url":"https://svc.commercetools.app/customer-number"}
+{"level":"info","message":"postDeploy: Extension updated in place — no gap window","at":"2026-10-26T12:04:27.483Z","key":"ecoliving-customer-number","url":"https://x/customer-number"}
+{"level":"info","message":"preUndeploy: Extension removed","at":"2026-10-26T12:04:27.499Z","key":"ecoliving-customer-number"}
+{"level":"info","message":"preUndeploy: Extension already absent","at":"2026-10-26T12:04:27.544Z","key":"ecoliving-customer-number"}
+ [32m✓[39m tests/post-deploy.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 135[2mms[22m[39m
+ [32m✓[39m tests/counter.service.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 257[2mms[22m[39m
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:28.959Z","correlationId":"local-2ac9fbc8-5f63-42e9-8d90-02923ce42300","status":401,"code":"Unauthorized"}
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:29.046Z","correlationId":"local-caf110c9-cd4a-428c-a87f-48cfba7f93a9","status":401,"code":"Unauthorized"}
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:29.076Z","correlationId":"local-3e19153a-e784-43d7-add3-48c92d3b50ad","status":401,"code":"Unauthorized"}
+ [32m✓[39m tests/customer-number.service.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+{"level":"info","message":"Customer evaluated","at":"2026-10-26T12:04:29.132Z","correlationId":"local-73b99ddf-3aa3-4b40-ad14-f1f5248ff29f","action":"Create","customerId":"c-1","summary":"assigned EL-000042","durationMs":1}
+{"level":"info","message":"Customer evaluated","at":"2026-10-26T12:04:29.151Z","correlationId":"local-6e952592-1391-431b-9f3f-57c8021f8418","action":"Create","customerId":"c-1","summary":"keeps LEGACY-7","durationMs":0}
+{"level":"error","message":"Counter unavailable — approving the sign-up without a number (fail open)","at":"2026-10-26T12:04:29.166Z","correlationId":"local-36c857b3-474b-44c3-926c-2e14d7ba31f6","reason":"503"}
+{"level":"info","message":"Customer evaluated","at":"2026-10-26T12:04:29.167Z","correlationId":"local-36c857b3-474b-44c3-926c-2e14d7ba31f6","action":"Create","customerId":"c-1","summary":"no number allocated — approved without one","durationMs":2}
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:29.193Z","correlationId":"local-a35d1f1d-c3ff-44fe-8591-4066745aaf52","status":400,"code":"InvalidInput"}
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:29.220Z","correlationId":"local-caa992ed-71ad-4240-8ce0-1f3d87bfec57","status":400,"code":"InvalidInput"}
+{"level":"info","message":"Customer evaluated","at":"2026-10-26T12:04:29.238Z","correlationId":"abc-123","action":"Create","customerId":"c-1","summary":"assigned EL-000042","durationMs":0}
+ [32m✓[39m tests/http.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 432[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m24 passed[39m[22m[90m (24)[39m
+[2m   Start at [22m 12:04:24
+[2m   Duration [22m 4.56s[2m (transform 2.12s, setup 0ms, import 3.84s, tests 854ms, environment 9ms)[22m
+
+

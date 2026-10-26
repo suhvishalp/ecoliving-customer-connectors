@@ -1,0 +1,24 @@
+
+> email-verification-receiver@1.0.0 test
+> node scripts/test.mjs --coverage --collectCoverageFrom='src/**/*.{ts,jsx,tsx,js}' --coverageReporters='text'
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/workspace/email-verification-receiver[39m
+
+ [32m✓[39m tests/confirm.service.spec.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 65[2mms[22m[39m
+{"level":"info","message":"Verification link clicked","at":"2026-10-26T12:04:28.841Z","correlationId":"local-a0f55c35-ce9a-4af3-af54-6cdf98079294","ok":true,"customerId":"c1"}
+{"level":"info","message":"Verification link clicked","at":"2026-10-26T12:04:28.919Z","correlationId":"local-572d3280-10ab-42e7-b4a6-ffef58ad118e","ok":false,"reason":"invalid"}
+{"level":"info","message":"Verification link clicked","at":"2026-10-26T12:04:28.937Z","correlationId":"local-a003c1b8-3d8d-4c24-958f-d5492aafbb1e","ok":false,"reason":"unavailable"}
+{"level":"info","message":"Verification link clicked","at":"2026-10-26T12:04:28.968Z","correlationId":"abc","ok":true,"customerId":"c1"}
+{"level":"info","message":"Verification token confirmed over JSON","at":"2026-10-26T12:04:29.029Z","correlationId":"local-d8733b02-b3ae-4ecf-b96e-04bad5f5a8c1","ok":true}
+{"level":"info","message":"Verification token confirmed over JSON","at":"2026-10-26T12:04:29.060Z","correlationId":"local-c95eb37f-495a-4ddf-827f-cc5f08eb113f","ok":false}
+{"level":"info","message":"Verification token confirmed over JSON","at":"2026-10-26T12:04:29.076Z","correlationId":"local-cec8a956-d882-4399-ba1f-935e08d0cf7d","ok":false}
+{"level":"warn","message":"Request rejected","at":"2026-10-26T12:04:29.108Z","correlationId":"local-20f6d30b-5659-4f00-9575-d9e298f1a228","status":400,"code":"InvalidInput"}
+ [32m✓[39m tests/http.spec.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 398[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m   Start at [22m 12:04:25
+[2m   Duration [22m 3.76s[2m (transform 1.12s, setup 0ms, import 2.15s, tests 463ms, environment 1ms)[22m
+
+

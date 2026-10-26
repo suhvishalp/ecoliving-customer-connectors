@@ -1,0 +1,118 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+INFO: Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 5.0.1.3006
+INFO: Java 17.0.10 Alpine (64-bit)
+INFO: Linux 6.8.0-117-generic amd64
+INFO: User cache: /opt/sonar-scanner/.sonar/cache
+INFO: Analyzing on SonarQube server 9.9.8.100196
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=320ms
+INFO: Server id: 147B411E-AaF4FnL5oqRRHm70Yr4Q
+INFO: User cache: /opt/sonar-scanner/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=225ms
+INFO: Load/download plugins (done) | time=460ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=31ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=8ms
+INFO: Project key: project
+INFO: Base dir: /usr/src
+INFO: Working dir: /usr/src/.scannerwork
+INFO: Load project settings for component key: 'project'
+WARN: SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=321ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=4321ms
+INFO: Load analysis cache
+INFO: Load analysis cache (404) | time=105ms
+WARN: Property 'sonar.password' is deprecated. It will not be supported in the future. Please instead use the 'sonar.login' parameter with a token.
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=111ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 46 files indexed
+INFO: Quality profile for ts: Sonar way
+INFO: ------------- Run sensors on module project
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=156ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=16ms
+INFO: Sensor TypeScript analysis [javascript]
+INFO: Found 3 tsconfig.json file(s): [/usr/src/email-verification-receiver/tsconfig.json, /usr/src/customer-number-generator/tsconfig.json, /usr/src/email-verification-sender/tsconfig.json]
+INFO: Creating TypeScript program
+INFO: TypeScript configuration file /usr/src/email-verification-receiver/tsconfig.json
+INFO: 46 source files to be analyzed
+INFO: Creating TypeScript program (done) | time=2204ms
+INFO: Starting analysis with current program
+INFO: Analyzed 12 file(s) with current program
+INFO: Creating TypeScript program
+INFO: TypeScript configuration file /usr/src/customer-number-generator/tsconfig.json
+INFO: Creating TypeScript program (done) | time=959ms
+INFO: Starting analysis with current program
+INFO: 21/46 files analyzed, current file: /usr/src/customer-number-generator/src/services/customer-number.service.ts
+INFO: Analyzed 17 file(s) with current program
+INFO: Creating TypeScript program
+INFO: TypeScript configuration file /usr/src/email-verification-sender/tsconfig.json
+INFO: Creating TypeScript program (done) | time=807ms
+INFO: Starting analysis with current program
+INFO: Analyzed 17 file(s) with current program
+INFO: 46/46 source files have been analyzed
+INFO: Hit the cache for 0 out of 46
+INFO: Miss the cache for 46 out of 46: ANALYSIS_MODE_INELIGIBLE [46/46]
+INFO: Sensor TypeScript analysis [javascript] (done) | time=32894ms
+INFO: Sensor CSS Rules [javascript]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [javascript] (done) | time=2ms
+INFO: Sensor C# Project Type Information [csharp]
+INFO: Sensor C# Project Type Information [csharp] (done) | time=12ms
+INFO: Sensor C# Analysis Log [csharp]
+INFO: Sensor C# Analysis Log [csharp] (done) | time=37ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=0ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=8ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: 46 source files to be analyzed
+INFO: 46/46 source files have been analyzed
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=253ms
+INFO: Sensor VB.NET Project Type Information [vbnet]
+INFO: Sensor VB.NET Project Type Information [vbnet] (done) | time=4ms
+INFO: Sensor VB.NET Analysis Log [vbnet]
+INFO: Sensor VB.NET Analysis Log [vbnet] (done) | time=29ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=1ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=177ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Analysis Warnings import [csharp]
+INFO: Sensor Analysis Warnings import [csharp] (done) | time=2ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=52ms
+INFO: SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
+INFO: CPD Executor 9 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 37 files
+INFO: CPD Executor CPD calculation finished (done) | time=88ms
+INFO: Analysis report generated in 216ms, dir size=288.3 kB
+INFO: Analysis report compressed in 2075ms, zip size=158.0 kB
+INFO: Analysis report uploaded in 251ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9001/dashboard?id=project
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://host.docker.internal:9001/api/ce/task?id=AaF4GpwPoqRRHm70Y1xm
+INFO: Analysis total time: 54.983 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 59.095s
+INFO: Final Memory: 17M/64M
+INFO: ------------------------------------------------------------------------
+AaF4GpwPoqRRHm70Y1xm
+[]
