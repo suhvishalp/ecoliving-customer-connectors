@@ -1,5 +1,7 @@
 # EcoLiving Customer Connectors — commercetools Connect *(course Sessions 5.8 · 7 · 8)*
 
+> **Installing it in Merchant Center?** Follow [INSTALL.md](INSTALL.md): the steps and the sample values for every setting.
+
 Three Connect applications on the one resource every shopper creates — the Customer — chosen because
 they put the two extensibility mechanisms of Session 7 side by side on the same object, each where it
 belongs. The order flow (cart rules, order events) lives in
