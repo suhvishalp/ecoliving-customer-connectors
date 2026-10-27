@@ -163,7 +163,7 @@ curl -s localhost:8094/email-verification-confirm -H 'content-type: application/
 
 ### Values to enter at install *(Merchant Center → Connect → Manage connectors → Install)*
 
-**Repository:** `https://github.com/commercetools/ecoliving-customer-connectors.git` · **Tag:** `v1.0.0` ·
+**Repository:** `https://github.com/commercetools/ecoliving-customer-connectors.git` · **Tag:** `v1.0.1` ·
 **Deployment type:** `sandbox` · **Region:** the project's (the course project: `europe-west1.gcp`).
 
 No `CTP_*` credentials are asked for: Connect generates the API client from `inheritAs.apiClient.scopes`.
