@@ -161,6 +161,31 @@ curl -s localhost:8094/email-verification-confirm -H 'content-type: application/
 | 5 | **Deploy** (`sandbox`), supplying `EXTENSION_SECRET` | up to **15 minutes** |
 | 6 | *CIL track only:* copy the receiver's URL into `RECEIVER_URL`, set `VERIFY_LINK_MODE=connector`, redeploy | one app cannot read another's URL |
 
+### Values to enter at install *(Merchant Center → Connect → Manage connectors → Install)*
+
+**Repository:** `https://github.com/commercetools/ecoliving-customer-connectors.git` · **Tag:** `v1.0.0` ·
+**Deployment type:** `sandbox` · **Region:** the project's (the course project: `europe-west1.gcp`).
+
+No `CTP_*` credentials are asked for: Connect generates the API client from `inheritAs.apiClient.scopes`.
+
+| App | Key | BFF track (course default) | CIL track | Notes |
+|---|---|---|---|---|
+| `customer-number-generator` | `EXTENSION_SECRET` *(secured, required)* | a fresh random value: `openssl rand -hex 32` | same | write-only; keep it in your password manager, changing it means a redeploy |
+| | `CUSTOMER_NUMBER_PREFIX` | `EL-` | `EL-` | numbers come out as `EL-000001` |
+| | `LOG_LEVEL` | `info` | `info` | `debug` to see every Extension call |
+| `email-verification-sender` | `STOREFRONT_URL` | `http://localhost:3000` | the CIL storefront's URL, e.g. `http://localhost:3000` | the mail's link targets `<STOREFRONT_URL>/verify-email?token=…`; localhost works because each participant opens it on their own laptop |
+| | `VERIFY_LINK_MODE` | `storefront` | `connector` (second deploy, see step 6) | `storefront` = the BFF confirms (task 5.8); `connector` = the receiver app confirms |
+| | `RECEIVER_URL` | *(leave empty)* | the receiver's URL from the first deployment, e.g. `https://service-xxxxxxxx.europe-west1.gcp.commercetools.app` | only read in `connector` mode; startup fails fast if `connector` mode has no value |
+| | `TOKEN_TTL_MINUTES` | `4320` | `4320` | 3 days |
+| | `MAX_MESSAGE_AGE_HOURS` | `72` | `72` | older messages are acknowledged and dropped |
+| | `LOG_LEVEL` | `info` | `info` | the "sent" link is logged at `info`: the deployment log doubles as the inbox |
+| `email-verification-receiver` | `STOREFRONT_URL` | `http://localhost:3000` | the CIL storefront's URL | where it redirects after confirming: `/verify-email?status=ok\|invalid\|retry` |
+| | `LOG_LEVEL` | `info` | `info` | |
+
+**After the deployment is `Deployed`:** the deployment page lists each app's URL (`*.commercetools.app`). Note the
+receiver's URL for the CIL track, then check the two registrations below. The BFF needs nothing new: its course API
+client already holds `manage_project`, which covers reading the `ecoliving-mail-outbox` Custom Object.
+
 **Sandbox scales to zero and needs ~15 s to boot**, while an Extension's budget is **2 s** — so the first
 sign-up after an idle period gets no number (fail open) or fails. Warm the generator before a demo.
 
